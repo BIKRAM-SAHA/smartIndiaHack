@@ -4,14 +4,9 @@ const passport = require('passport');
 const MongoStore = require('connect-mongo');
 const { connectDB } = require("./config/db-config");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 const { PORT, DATABASE_URL, SESSION_SECRET } = require('./config/keys');
-require('./config/passport-config');
-const { authApi } = require('./api/authApi');
-const { newAccApi } = require('./api/newAccApi');
-const { schoolApi } = require("./api/schoolApi");
-const { testApi } = require("./api/testApi");
-const { cocurrApi } = require("./api/cocurrApi");
-const { contactApi } = require("./api/contactApi");
+
 require('./model/User');
 require('./model/School');
 require('./model/Student');
@@ -21,7 +16,8 @@ const app = express();
 const connection = connectDB();
 
 app.use(cors({
-    origin: "*"
+    origin: "http://localhost:3000",
+    credentials: true
 }));
 app.set("trust proxy", 1);
 
@@ -45,9 +41,20 @@ app.use(expressSession({
     }
 }));
 // After this, request has a req.session property added by express session
+app.use(cookieParser(SESSION_SECRET));
 
 app.use(passport.initialize());
 app.use(passport.session()); // passport will target the req.session property
+require('./config/passport-config')(passport);
+
+module.exports.passport = passport;
+
+const { authApi } = require('./api/authApi');
+const { newAccApi } = require('./api/newAccApi');
+const { schoolApi } = require("./api/schoolApi");
+const { testApi } = require("./api/testApi");
+const { cocurrApi } = require("./api/cocurrApi");
+const { contactApi } = require("./api/contactApi");
 
 app.use('/auth', authApi);
 app.use('/create', newAccApi);

@@ -6,7 +6,7 @@ const baseUrl = process.env.REACT_APP_SERVER_URL || 'http://localhost:4000';
 export const checkAuthStatus = async () => {
     try
     {
-        const res = await axios.get(`${baseUrl}/auth/authstatus`);
+        const res = await axios.get(`${baseUrl}/auth/authstatus`, { withCredentials: true });
         return res.data;
     }
     catch(error)
@@ -24,7 +24,7 @@ export const checkAuthStatus = async () => {
 export const authLogin = async (creds) => {
     try
     {
-        const res = await axios.post(`${baseUrl}/auth/login`, creds);
+        const res = await axios.post(`${baseUrl}/auth/login`, creds, { withCredentials: true });
         queryClient.invalidateQueries('authstatus');
         return res.data;
     }
@@ -43,7 +43,7 @@ export const authLogin = async (creds) => {
 export const authRegister = async (creds) => {
     try
     {
-        const res = await axios.post(`${baseUrl}/auth/register`, creds);
+        const res = await axios.post(`${baseUrl}/auth/register`, creds, { withCredentials: true });
         return res.data;
     }
     catch(error)

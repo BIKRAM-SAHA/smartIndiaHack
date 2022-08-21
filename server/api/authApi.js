@@ -5,7 +5,7 @@ const { signupController, loginController, logoutController, authStatusControlle
 const router = Router();
 
 router.post('/register', signupController)
-router.post('/login', passport.authenticate('local'), loginController); 
+router.post('/login', loginController); 
 // In case of fail there will be 401 status code with a string response 'Unauthorised'
 router.post('/logout', logoutController);
 router.get('/authstatus', authStatusController);

@@ -3,6 +3,7 @@ const { User } = require("../model/User");
 const { School } = require("../model/School");
 const { genPassword } = require("../utils/genPassword");
 const { ORG_EMAIL, ORG_PASSWORD } = require('../config/keys');
+const { passport } = require('../app');
 
 const signupController = async (req, res) => {
     // send message containing uniqueId and password
@@ -62,8 +63,28 @@ const signupController = async (req, res) => {
     }
 }
 
-const loginController = (req,res) => {
-    res.status(200).json({ message: "Login Successful", user: req.user });
+const loginController = (req,res, next) => {
+    passport.authenticate('local', (err, user, info) => {
+        if(err)
+        {
+            if(err === 1) res.status(401).json({ message: "User doesn't exist" })
+            if(err === 2) res.status(401).json({ message: "Incorrect password" })
+            if(err === 3) res.status(500).json({ message: "Server Error" })
+        }
+        else
+        {
+            if(!user) res.status(401).json({ message: "Login Failed" })
+            else 
+            {
+                req.logIn(user, (err) => {
+                    if(err) throw err;
+                    console.log("Yayy it works -> ");
+                    console.dir(req.user);
+                    res.status(200).json({ message: "Login Successful", user: req.user });
+                })
+            }
+        }
+    })(req, res, next)
 }
 
 const logoutController = (req,res) => {
