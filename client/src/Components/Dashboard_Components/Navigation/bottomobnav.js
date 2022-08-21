@@ -1,16 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
  
    
-function Mobnav() {
+function Mobnav({menuOption , setMenuOption}) {
+
+
     const list= document.querySelectorAll('.list');
     function activeLink(){
         list.forEach((item) =>
         item.classList.remove('active'));
-        this.classList.add('active');
+        this.classList.add('active'); 
     }
     list.forEach((item)=>
     item.addEventListener('click',activeLink)); 
 
+    const handleClick = (val) =>{
+        setMenuOption(val);
+    }
 
     
   return (  
@@ -20,7 +25,7 @@ function Mobnav() {
         <ul className="flex items-center justify-around pt-3 pb-2 bg-white shadow-inner rounded-t-xl h-14 font-pops -z-20">
              
             <li  className="z-10 list active">
-                <a href="#" className="navstyle group">
+                <a href="#" className="navstyle group" on onClick={()=>handleClick(1)}>
                     <span className="mx-6 ">
                     <i className="uil uil-home icon"></i>
                     </span>
@@ -30,7 +35,7 @@ function Mobnav() {
             </li>
 
             <li  className="list">
-                <a href="#"  className="navstyle group">
+                <a href="#"  className="navstyle group" onClick={()=>handleClick(2)}>
                     <span className="mx-6">
                     <i className="uil uil-diary-alt icon"></i>
                     </span>  
@@ -40,7 +45,7 @@ function Mobnav() {
             </li>
 
             <li className="list">
-                <a href="#"  className="navstyle group">
+                <a href="#"  className="navstyle group" onClick={()=>handleClick(3)}>
                     <span className="mx-6 ">
                     <i className="uil uil-missed-call icon open:bg-black"></i>
                     </span>
@@ -50,7 +55,7 @@ function Mobnav() {
             </li>   
  
             <li  className="list">
-                <a href="#"  className="navstyle group">
+                <a href="#"  className="navstyle group" onClick={()=>handleClick(4)}>
                     <span className="mx-6 ">
                     <i className="uil uil-envelope icon"></i>
                     </span>
@@ -60,7 +65,7 @@ function Mobnav() {
             </li>
  
             <li className="pr-3 list" >
-                <a href="#"  className="navstyle group">
+                <a href="#"  className="navstyle group" onClick={()=>handleClick(5)}>
                     <span className="mx-6"></span>
                     <i className="uil uil-elipsis-double-v-alt text-2xl icon"></i>
                     <span className="text">MORE
