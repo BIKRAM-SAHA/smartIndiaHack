@@ -5,7 +5,7 @@ const MongoStore = require('connect-mongo');
 const { connectDB } = require("./config/db-config");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-const { PORT, DATABASE_URL, SESSION_SECRET } = require('./config/keys');
+const { PORT, DATABASE_URL, SESSION_SECRET, CLIENT_URL } = require('./config/keys');
 
 require('./model/User');
 require('./model/School');
@@ -16,7 +16,7 @@ const app = express();
 const connection = connectDB();
 
 app.use(cors({
-    origin: "http://localhost:3000",
+    origin: CLIENT_URL,
     credentials: true
 }));
 app.set("trust proxy", 1);

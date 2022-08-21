@@ -59,9 +59,6 @@ function Partner() {
         </a>
       </div>
     </div>
-    <div className="hover:text-orange-500 flex justify-center items-center pt-5">
-                        <button className="flex justify-center w-32 py-1 mt-2 mr-5 border-2 active:scale-95 border-first rounded-xl group translate-x-3"><a href="/login"  className="text-base font-semibold text-orange-500">LOG IN</a></button>
-                        </div>
     </div>
     </section>
     </div>

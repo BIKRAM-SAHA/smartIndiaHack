@@ -102,7 +102,7 @@ function Homenav() {
                         <a href="#contact" className="">CONTACT</a></li>
                     
                 </ul>
-                <div className='flex flex-row justify-between'>
+                <div className='flex flex-row justify-between mt-2 mr-4'>
                     {/* <div className="hover:text-orange-500">
                         <button className="flex justify-center w-32 py-1 mb-3 mr-5 border-2 hover:border-first rounded-xl group active:scale-95">
                             <Link to="/login" className="text-base font-semibold text-slate-400 group-hover:text-orange-500">LOG IN</Link>
