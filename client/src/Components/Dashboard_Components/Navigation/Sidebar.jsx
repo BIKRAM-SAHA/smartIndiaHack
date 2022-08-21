@@ -1,10 +1,50 @@
 import React, { useState } from "react";
-import { UilUserCircle, UilBars, UilMultiply } from "@iconscout/react-unicons";
+import { UilUserCircle, UilBars, UilMultiply, UilEstate } from "@iconscout/react-unicons";
 import logofull from "../../../logofull.svg";
 import logoicon from "../../../logoicon.svg";
 import Navgrid from "./Navgrid";
 
-function Sidebar({ menuList = [] }) {
+function Sidebar({ menuList = [{
+  id: 1,
+  title: "Dashboard",
+  icon: <UilEstate />,
+},
+{
+  id: 2,
+  title: "Students",
+  submenu: true,
+  submenuItems: [
+    { id: 2.1, title: "Student List" },
+    { id: 2.2, title: "Add Student" },
+  ],
+},
+{
+  id: 3,
+  title: "Teachers",
+  submenu: true,
+  submenuItems: [
+    { id: 3.1, title: "Teacher List" },
+    { id: 3.2, title: "Add Teacher" },
+  ],
+},
+{
+  id: 4,
+  title: "Classes",
+  submenu: true,
+  submenuItems: [
+    { id: 4.1, title: "Classes List" },
+    { id: 4.2, title: "Add Classes" },
+  ],
+},
+{
+  id: 5,
+  title: "Coach",
+  submenu: true,
+  submenuItems: [
+    { id: 5.1, title: "Coach List" },
+    { id: 5.2, title: "Add Coach" },
+  ],
+},] }) {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState(1);
   return (
@@ -76,3 +116,5 @@ function Sidebar({ menuList = [] }) {
 }
 
 export default Sidebar;
+
+

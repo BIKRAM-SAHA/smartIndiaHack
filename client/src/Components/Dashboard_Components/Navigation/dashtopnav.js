@@ -3,7 +3,7 @@ import icon from './logo.png'
 
 function topnav() {
   return (
-    <div className='flex flex-col justify-start h-screen '>
+    <div className='flex flex-col justify-start '>
          <div id="upnavbar" className="flex flex-row justify-between ">
                     <a href="/" className='flex items-center'>
                     <img src={icon} alt="" className='py-2 pl-2 h-14 '/>
