@@ -11,6 +11,7 @@ const { newAccApi } = require('./api/newAccApi');
 const { schoolApi } = require("./api/schoolApi");
 const { testApi } = require("./api/testApi");
 const { cocurrApi } = require("./api/cocurrApi");
+const { contactApi } = require("./api/contactApi");
 require('./model/User');
 require('./model/School');
 require('./model/Student');
@@ -53,6 +54,7 @@ app.use('/create', newAccApi);
 app.use('/school',schoolApi);
 app.use('/test', testApi);
 app.use('/cocurr', cocurrApi);
+app.use('/contact', contactApi);
 
 app.get('/', (req,res) => {
     console.log(req.session);

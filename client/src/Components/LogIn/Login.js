@@ -37,11 +37,13 @@ export default function Login() {
   const [showSignUp, setShowSignUp] = useState(false);
   const [schoolName, setSchoolName] = useState('');
   const [email, setEmail] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const login = async () => {
     if(uniqueId === "" || password === "") setError("Please fill all fields")
     else
     {
+      setIsLoading(true);
       const data = await authLogin({ uniqueId, password });
       if(data.error) 
       {
@@ -53,6 +55,7 @@ export default function Login() {
       {
         navigate(`/${data?.user?.userType}_D`);
       }
+      setIsLoading(false);
     }
   }
 
@@ -60,6 +63,7 @@ export default function Login() {
     if(email === "" || schoolName === "") setError2("Please fill all fields")
     else
     {
+      setIsLoading(true);
       const data = await authRegister({ name: schoolName, email });
       if(data.error)
       {
@@ -72,6 +76,7 @@ export default function Login() {
         window.alert("Mail has been sent!");
         window.location.reload();
       }
+      setIsLoading(false);
     }
   }
 
@@ -106,6 +111,10 @@ export default function Login() {
                 {posts.map((post) => (
                   <main class="bg-white max-w-lg p-8 md:p-12 mx-5 rounded-lg shadow-2xl">
                       {
+                        ((post.title !== 'School') || (post.title === 'School' && (!showSignUp))) &&
+                        isLoading ? 
+                        <section><h3 class="font-bold text-2xl">LOADING...</h3></section>
+                        :
                         ((post.title !== 'School') || (post.title === 'School' && (!showSignUp))) &&
                         <>
                           <section>
@@ -154,6 +163,10 @@ export default function Login() {
                         </>
                       }
                       {
+                        (post.title === 'School' && showSignUp) &&
+                        isLoading ? 
+                        <section><h3 class="font-bold text-2xl">LOADING...</h3></section>
+                        :
                         (post.title === 'School' && showSignUp) &&
                         <>
                           <section>
