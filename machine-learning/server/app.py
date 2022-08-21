@@ -1,7 +1,7 @@
 import numpy as np
 from flask import Flask,request,jsonify
 import pickle
-
+import requests
 app = Flask(__name__)
 
 #loading the model
@@ -17,3 +17,6 @@ def predict():
 
 if __name__=='__main__':
     app.run(port=5000,debug=True)
+
+url='http://localhost:5000/api'
+
