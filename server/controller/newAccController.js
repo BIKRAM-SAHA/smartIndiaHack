@@ -11,7 +11,7 @@ const newStudentController = async (req, res) => {
         if(!req.user) return res.status(401).json({ message: "Unauthorized Access" });
         if(req.user.userType !== 'School') return res.status(400).json({ message: "Only school can create new student" });
 
-        const { firstname, lastname, degree, stream, rollNumber, email } = req.body;
+        const { name, degree, stream, rollNumber, email } = req.body;
 
         // check existing
         const existingUser1 = await User.findOne({ email: email });
@@ -23,8 +23,7 @@ const newStudentController = async (req, res) => {
         }
 
         const infoDoc = await Student.create({ 
-            firstname, 
-            lastname, 
+            name,
             degree, 
             stream, 
             rollNumber, 
@@ -75,7 +74,7 @@ const newTeacherController = async (req, res) => {
         if(!req.user) return res.status(401).json({ message: "Unauthorized Access" });
         if(req.user.userType !== 'School') return res.status(400).json({ message: "Only school can create new student" });
 
-        const { firstname, lastname, email } = req.body;
+        const { name, email } = req.body;
 
         // check existing
         const existingUser1 = await User.findOne({ email: email });
@@ -86,8 +85,7 @@ const newTeacherController = async (req, res) => {
         }
 
         const infoDoc = await Teacher.create({ 
-            firstname, 
-            lastname,
+            name,
             school: req.user.userInfo._id
         });
         const password = genPassword();

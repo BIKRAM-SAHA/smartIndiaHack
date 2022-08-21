@@ -5,8 +5,7 @@ const teacherSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'School'
     },
-    firstname: String,
-    lastname: String,
+    name: String,
     classRooms: { type: [ String ], default: [] }
 });
 

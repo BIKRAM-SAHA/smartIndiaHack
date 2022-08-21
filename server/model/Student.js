@@ -5,8 +5,7 @@ const studentSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'School'
     },
-    firstname: String,
-    lastname: String,
+    name: String,
     degree: String,
     stream: String,
     rollNumber: String,
