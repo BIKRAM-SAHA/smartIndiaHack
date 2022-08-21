@@ -80,6 +80,12 @@ const logoutController = (req,res) => {
     });
 }
 
+const authStatusController = (req,res) => {
+    if(req.user) return res.status(200).json({ isLoggedIn: true, user: req.user });
+    else return res.status(200).json({ isLoggedIn: false, user: req.user });
+}
+
 module.exports.loginController = loginController;
 module.exports.signupController = signupController;
 module.exports.logoutController = logoutController;
+module.exports.authStatusController = authStatusController;

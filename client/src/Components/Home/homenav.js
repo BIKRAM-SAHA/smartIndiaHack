@@ -1,10 +1,12 @@
 import React,{useState} from 'react'
 import icon from './logo.png'
 import { Link } from 'react-router-dom'
-
+import { useQuery } from 'react-query';
+import { checkAuthStatus } from '../../api/authReq';
 
 function Homenav() {
-    const[show,setShow]=useState(false)
+    const[show,setShow]=useState(false);
+    const authStatus = useQuery('authstatus', checkAuthStatus, { initialData: { user: undefined, isLoggedIn: false } })
   return (
     <div className="sticky top-0 z-50 bg-white" >
         <nav id='mobileview' className='lg:hidden'>
@@ -39,17 +41,39 @@ function Homenav() {
                         <i class="uil uil-envelope pr-2"></i>
                         <a href="#contact" onClick={()=>setShow(false)} className="">CONTACT</a></li>
                     <div className='flex flex-row pt-5 justify-betweem'>
-                        <div className="hover:text-orange-500">
-                        <button className="flex justify-center w-32 py-1 mb-3 mr-5 border-2 hover:border-first rounded-xl group active:scale-95"><Link to="/login" className="text-base font-semibold text-slate-400 group-hover:text-orange-500">LOG IN</Link></button>
+                        {/* <div className="hover:text-orange-500">
+                            <button className="flex justify-center w-32 py-1 mb-3 mr-5 border-2 hover:border-first rounded-xl group active:scale-95">
+                                <Link to="/login" className="text-base font-semibold text-slate-400 group-hover:text-orange-500">LOG IN</Link>
+                            </button>
                         </div>
-                        <button className="flex items-center justify-center w-32 h-9 rounded-xl hover:text-first bg-first hover:bg-orange-500 active:scale-95"><a href="#" className="text-base font-semibold text-white ">SIGN IN</a></button>
+                        <button className="flex items-center justify-center w-32 h-9 rounded-xl hover:text-first bg-first hover:bg-orange-500 active:scale-95">
+                            <a href="#" className="text-base font-semibold text-white ">SIGN IN</a>
+                        </button> */}
+                        {
+                            (authStatus.isFetched && authStatus.data.isLoggedIn) ?
+                            <button className="flex items-center justify-center w-32 h-9 rounded-xl hover:text-first bg-first hover:bg-orange-500 active:scale-95">
+                                {
+                                    (authStatus.data.user.userType === "School") ?
+                                    <Link to="/School_D" className="text-base font-semibold text-white ">DASHBOARD</Link>
+                                    :
+                                    (authStatus.data.user.userType === "Student") ?
+                                    <Link to="/Student_D" className="text-base font-semibold text-white ">DASHBOARD</Link>
+                                    :
+                                    <Link to="/Teacher_D" className="text-base font-semibold text-white ">DASHBOARD</Link>
+                                }
+                            </button>
+                            :
+                            <button className="flex items-center justify-center w-32 h-9 rounded-xl hover:text-first bg-first hover:bg-orange-500 active:scale-95">
+                                <Link to="/login" className="text-base font-semibold text-white ">LOG IN</Link>
+                            </button>
+                        }
                     </div>
                 </ul>:null
                 }
             </div>
             
         </nav>
-        <nav id='desktopview' className='hidden lg:block'>
+        <nav id='desktopview' className='hidden lg:block mr-0'>
         <div className="flex justify-between">
         
             <div className="flex flex-row">
@@ -78,13 +102,34 @@ function Homenav() {
                         <a href="#contact" className="">CONTACT</a></li>
                     
                 </ul>
-                <div className='flex flex-row justify-betweem'>
-                        <div className="hover:text-orange-500">
-                        <button className="flex justify-center w-32 py-1 mt-2 mr-5 border-2 active:scale-95 hover:border-first rounded-xl group"><Link to="/login" className="text-base font-semibold text-slate-400 group-hover:text-orange-500">LOG IN</Link></button>
-                        </div>
-                        
-                        <li className="flex items-center justify-center w-32 py-1 mt-2 mr-2 active:scale-95 h-9 rounded-xl hover:text-first bg-first hover:bg-orange-500"><a href="#" className="text-base font-semibold text-white">SIGN IN</a></li>
-                    </div> 
+                <div className='flex flex-row justify-between'>
+                    {/* <div className="hover:text-orange-500">
+                        <button className="flex justify-center w-32 py-1 mb-3 mr-5 border-2 hover:border-first rounded-xl group active:scale-95">
+                            <Link to="/login" className="text-base font-semibold text-slate-400 group-hover:text-orange-500">LOG IN</Link>
+                        </button>
+                    </div>
+                    <button className="flex items-center justify-center w-32 h-9 rounded-xl hover:text-first bg-first hover:bg-orange-500 active:scale-95">
+                        <a href="#" className="text-base font-semibold text-white ">SIGN IN</a>
+                    </button> */}
+                    {
+                        (authStatus.isFetched && authStatus.data.isLoggedIn) ?
+                        <button className="flex items-center justify-center w-32 h-9 rounded-xl hover:text-first bg-first hover:bg-orange-500 active:scale-95">
+                            {
+                                (authStatus.data.user.userType === "School") ?
+                                <Link to="/School_D" className="text-base font-semibold text-white ">DASHBOARD</Link>
+                                :
+                                (authStatus.data.user.userType === "Student") ?
+                                <Link to="/Student_D" className="text-base font-semibold text-white ">DASHBOARD</Link>
+                                :
+                                <Link to="/Teacher_D" className="text-base font-semibold text-white ">DASHBOARD</Link>
+                            }
+                        </button>
+                        :
+                        <button className="flex items-center justify-center w-32 h-9 rounded-xl hover:text-first bg-first hover:bg-orange-500 active:scale-95">
+                            <Link to="/login" className="text-base font-semibold text-white ">LOG IN</Link>
+                        </button>
+                    }
+                </div> 
             </div>
         </nav>
     </div>

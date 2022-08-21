@@ -7,7 +7,7 @@ function Home() {
     <div className='h-128 relative min-w-fit md:mx-10'>
       <div className="flex items-center justify-center ">
       <div className="absolute -right-14 top-36">
-        <a href="" className='flex flex-row items-end rotate-90 '>
+        <a href="#about" className='flex flex-row items-end rotate-90 '>
           <span className="text-3xl font-bold -translate-y-2 text-slate-300">LEARN MORE</span>
         </a>
       </div>
@@ -28,8 +28,8 @@ function Home() {
         loop
         src="https://assets10.lottiefiles.com/packages/lf20_yjrdpceb.json"
         style={{ height: '360px', width: '360px' }}
->
-</Player>
+      >
+      </Player>
       </div>
     </div>
   )
