@@ -56,6 +56,44 @@ const getLearningPath = async (req,res) => {
     }
 }
 
+const getLearningPathByStudentId = async (req,res) => {
+    try 
+    {
+        if(!req.user) return res.status(401).json({ message: "Unauthorized Access" });
+
+        const { studentId } = req.body;
+        
+        const learningPath = await LearningPath.find({ studentId });
+
+        if(learningPath.length === 0) return res.status(404).json({ message: "No learning paths for given student", learningPath })
+        else return res.status(200).json({ message: "Learning Paths fetched successfully", learningPath });
+    } 
+    catch(err) 
+    {
+        console.log(err);
+        res.status(500).json({ message: "Server Error" });
+    }
+}
+
+const getLearningPathByClassroomId = async (req,res) => {
+    try 
+    {
+        if(!req.user) return res.status(401).json({ message: "Unauthorized Access" });
+
+        const { classroomId } = req.body;
+        
+        const learningPath = await LearningPath.find({ classroomId });
+
+        if(learningPath.length === 0) return res.status(404).json({ message: "No learning paths for given classroom", learningPath })
+        else return res.status(200).json({ message: "Learning Paths fetched successfully", learningPath });
+    } 
+    catch(err) 
+    {
+        console.log(err);
+        res.status(500).json({ message: "Server Error" });
+    }
+}
+
 const updateLearningPath = async (req, res) => {
     try
     {
@@ -116,5 +154,7 @@ const updateLearningPath = async (req, res) => {
 
 module.exports.addLearningPath = addLearningPath;
 module.exports.getLearningPath = getLearningPath;
+module.exports.getLearningPathByStudentId = getLearningPathByStudentId;
+module.exports.getLearningPathByClassroomId = getLearningPathByClassroomId;
 module.exports.updateLearningPath = updateLearningPath;
 // module.exports.deleteTestScore = deleteTestScore;

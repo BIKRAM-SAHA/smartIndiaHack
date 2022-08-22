@@ -55,6 +55,7 @@ const { schoolApi } = require("./api/schoolApi");
 const { learnPathApi } = require("./api/learnPathApi");
 const { cocurrApi } = require("./api/cocurrApi");
 const { contactApi } = require("./api/contactApi");
+const { listApi } = require("./api/listApi");
 
 app.use('/auth', authApi);
 app.use('/create', newAccApi);
@@ -62,6 +63,7 @@ app.use('/school',schoolApi);
 app.use('/learnpath', learnPathApi);
 app.use('/cocurr', cocurrApi);
 app.use('/contact', contactApi);
+app.use('/getStudentList', listApi);
 
 app.get('/', (req,res) => {
     console.log(req.session);
