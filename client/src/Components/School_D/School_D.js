@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import Bottomobnav from '../Dashboard_Components/Navigation/bottomobnav'
 import Dashtopnav from '../Dashboard_Components/Navigation/dashtopnav'
 import Sidebar from '../Dashboard_Components/Navigation/Sidebar'
+import AuthWrapper from '../LogIn/AuthWrapper'
 
 function useWindowSize() {
     // Initialize state with undefined width/height so server and client renders match
@@ -34,39 +35,39 @@ const School_D = () => {
     const [menuOption, setMenuOption] = useState(1);
     const size = useWindowSize();
     return (
-        <div >
+        <AuthWrapper>
+          <div>
             {
-                size.width >= 600 ?
-                <Sidebar  />
-                :
-                <>
-                    <Dashtopnav />
-                    <div>
-                    {
-                        menuOption == 1 ?  
-                        <div>Home</div> 
-                        : 
-                        menuOption == 2 ?
-                        <div>PATH</div>
-                        : 
-                        menuOption == 3 ?
-                        <div>STAFF</div>
-                        : 
-                        menuOption == 4 ?
-                        <div>NEWS</div>
-                        : 
-                        menuOption == 5 ?
-                        <div>MORE</div>
-                        : 
-                        <></>
-                    }
-                    </div>
-                    <Bottomobnav menuOption={menuOption} setMenuOption={setMenuOption} />
-                </>
+              size.width >= 600 ?
+              <Sidebar  />
+              :
+              <>
+                <Dashtopnav />
+                <div>
+                {
+                    menuOption === 1 ?  
+                    <div>Home</div> 
+                    : 
+                    menuOption === 2 ?
+                    <div>PATH</div>
+                    : 
+                    menuOption === 3 ?
+                    <div>STAFF</div>
+                    : 
+                    menuOption === 4 ?
+                    <div>NEWS</div>
+                    : 
+                    menuOption === 5 ?
+                    <div>MORE</div>
+                    : 
+                    <></>
+                }
+                </div>
+                <Bottomobnav menuOption={menuOption} setMenuOption={setMenuOption} />
+              </>
             }
-           
-
-        </div>
+          </div>
+        </AuthWrapper>
     )
 }
 
