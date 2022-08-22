@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const baseUrl = process.env.REACT_APP_SERVER_URL || 'http://localhost:4000';
 
-export const checkAuthStatus = async () => {
+export const getData = async () => {
     try
     {
         const res = await axios.get(`${baseUrl}/auth/authstatus`, { withCredentials: true });
