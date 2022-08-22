@@ -40,7 +40,7 @@ const getScoresForStudent = async (req,res) => {
 
         const { studentId } = req.body;
         const student = await User.findById(studentId).populate('userInfo');
-        console.log(student);
+        // console.log(student);
         const classrooms = student.userInfo.classRooms;
         let total = 0;
         let classroomScores = [];
@@ -48,14 +48,15 @@ const getScoresForStudent = async (req,res) => {
         for(i of classrooms)
         {
             const tests = await Test.find({ classroomId: i, studentId: studentId });
+            const classroom = await Classroom.findById(i);
             let classroomTotal = 0;
             for(t of tests) 
             {
                 total += t.score;
                 classroomTotal += t.score;
-                testScores.push({ testName: t.testName, score: t.score });
+                testScores.push({...t._doc, studentId: student, classroomId: classroom });
             }
-            classroomScores.push({ classroomId: i, score: classroomTotal });
+            classroomScores.push({ classroom: classroom, tests: tests, score: classroomTotal });
         }
         return res.status(200).json({
             overallTotal: total,
