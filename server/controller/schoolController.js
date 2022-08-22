@@ -1,6 +1,7 @@
 const { Classroom } = require("../model/ClassRoom");
 const { Teacher } = require("../model/Teacher");
 const { Student } = require("../model/Student");
+const { LearningPath } = require("../model/LearningPath");
 
 const createClassroom = async(req,res) => {
     if(req?.user?.userType != "School"){
@@ -44,7 +45,16 @@ const addStudent = async(req , res) =>{
     });
     let students = classroom?.students;
     if(students?.includes(studentId) == false){
+        const learningOutcomes = classroom.learningOutcomes.map((lo) => {
+            return { name: lo, isDone: false }
+        });
         students.push(studentId);
+        const newLearningPath = await LearningPath.create({ 
+            classroomId,
+            studentId,
+            learningOutcomes,
+            score: 0
+        });
     }
     classroom.students = students;
     await Classroom.findByIdAndUpdate({_id:classroomId}, classroom);

@@ -52,14 +52,14 @@ module.exports.passport = passport;
 const { authApi } = require('./api/authApi');
 const { newAccApi } = require('./api/newAccApi');
 const { schoolApi } = require("./api/schoolApi");
-const { testApi } = require("./api/testApi");
+const { learnPathApi } = require("./api/learnPathApi");
 const { cocurrApi } = require("./api/cocurrApi");
 const { contactApi } = require("./api/contactApi");
 
 app.use('/auth', authApi);
 app.use('/create', newAccApi);
 app.use('/school',schoolApi);
-app.use('/test', testApi);
+app.use('/learnpath', learnPathApi);
 app.use('/cocurr', cocurrApi);
 app.use('/contact', contactApi);
 
