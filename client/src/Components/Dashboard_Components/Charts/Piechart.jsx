@@ -35,10 +35,10 @@ function Piechart({ labels, dataset, colors }) {
 export default Piechart;
 
 // call example:
-// <Piechart
-//           labels={["Games", "Dance", "Art", "WE"]}
-//           dataset={[[20, 40, 10, 30]]}
-//           colors={[
-//             ["rgb(230,206,247)", "rgb(247,15,225)", "#b0d980", "#83de14"],
-//           ]}
-//         />
+{/* <Piechart
+          labels={["Games", "Dance", "Art", "WE"]}
+          dataset={[[20, 40, 10, 30]]}
+          colors={[
+            ["rgb(230,206,247)", "rgb(247,15,225)", "#b0d980", "#83de14"],
+          ]}
+        /> */}
