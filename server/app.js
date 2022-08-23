@@ -63,7 +63,7 @@ app.use('/school',schoolApi);
 app.use('/learnpath', learnPathApi);
 app.use('/cocurr', cocurrApi);
 app.use('/contact', contactApi);
-app.use('/getStudentList', listApi);
+app.use('/getList', listApi);
 
 app.get('/', (req,res) => {
     console.log(req.session);

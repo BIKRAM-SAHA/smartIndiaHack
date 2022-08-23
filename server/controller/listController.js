@@ -1,9 +1,10 @@
 const { Classroom } = require("../model/ClassRoom");
+const { LearningPath } = require("../model/LearningPath");
 const { Student } = require("../model/Student");
 const { Teacher } = require("../model/Teacher");
 const { User } = require("../model/User");
 
-const sendStudentDataTeacher = async (req, res) => {
+const sendStudentListToTeacher = async (req, res) => {
     try 
     {
         if(!req.user) return res.status(401).json({ message: "Unauthorized Access" });
@@ -33,7 +34,7 @@ const sendStudentDataTeacher = async (req, res) => {
     }
 }
 
-const sendStudentDataSchool = async (req, res) => {
+const sendStudentListToSchool = async (req, res) => {
     try 
     {
         if(!req.user) return res.status(401).json({ message: "Unauthorized Access" });
@@ -52,5 +53,25 @@ const sendStudentDataSchool = async (req, res) => {
     }
 }
 
-module.exports.sendStudentDataSchool = sendStudentDataSchool;
-module.exports.sendStudentDataTeacher = sendStudentDataTeacher;
+const sendTeacherListToSchool = async (req, res) => {
+    try 
+    {
+        if(!req.user) return res.status(401).json({ message: "Unauthorized Access" });
+
+        const { schoolId } = req.body;
+
+        const teachers = await Teacher.find({ school: schoolId });
+
+        if(teachers.length) return res.status(200).json({ message: "Students fetched successfully", teachers });
+        else return res.status(404).json({ message: "No students for given school", teachers });
+    } 
+    catch(err) 
+    {
+        console.log(err);
+        res.status(500).json({ message: "Server Error" });
+    }
+}
+
+module.exports.sendStudentListToSchool = sendStudentListToSchool;
+module.exports.sendStudentListToTeacher = sendStudentListToTeacher;
+module.exports.sendTeacherListToSchool = sendTeacherListToSchool;
