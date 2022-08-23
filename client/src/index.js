@@ -5,6 +5,7 @@ import Home from "./Components/Home/Home";
 import Login from "./Components/LogIn/Login";
 import Student_D from "./Components/Student_D/Student_D";
 import Teacher_D from "./Components/Teacher_D/Teacher_D";
+import School_D from "./Components/School_D/School_D";
 import { render } from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import StudentCard from "./Components/Dashboard_Components/Cards/StudentCard";
@@ -26,6 +27,7 @@ const wrapper = (
         <Route path="/login" element={<Login />} />
         <Route path="/Student_D" element={<Student_D />} />
         <Route path="/Teacher_D" element={<Teacher_D />} />
+        <Route path="/School_D" element={<School_D />} />
         <Route
           path="/custom"
           element={

@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
- 
+import React from 'react'
+import { UilEstate, UilBookOpen, UilAward } from "@iconscout/react-unicons";
    
-function Mobnav({menuOption , setMenuOption}) {
+function Mobnav({menuOption , menuList, setMenuOption}) {
 
 
     const list= document.querySelectorAll('.list');
@@ -13,17 +13,26 @@ function Mobnav({menuOption , setMenuOption}) {
     list.forEach((item)=>
     item.addEventListener('click',activeLink)); 
 
-    const handleClick = (val) =>{
-        setMenuOption(val);
-    }
-
-    
   return (  
     <div className='flex flex-col justify-end h-screen w-full absolute bottom-0'>
        
         <div id="bottomnavbar" className="lg:hidden navigation">
         <ul className="flex items-center justify-around pt-3 pb-2 bg-white shadow-inner rounded-t-xl h-14 font-pops -z-20">
-             
+            {
+                menuList.map((item, idx) => {
+                    return (
+                        <li className={"list " + ((idx === 0) ? "active": "")} key={idx}>
+                            <a className="navstyle group" onClick={() => { setMenuOption(item.id) }}>
+                                <span className="mx-6">
+                                    <i className={item.iconclass + " icon"}></i>   
+                                </span>  
+                                <span className="text">{item.title}</span>
+                            </a>
+                        </li>
+                    )
+                })
+            }
+{/*              
             <li  className="z-10 list active">
                 <a href="#" className="navstyle group" on onClick={()=>handleClick(1)}>
                     <span className="mx-6 ">
@@ -72,7 +81,7 @@ function Mobnav({menuOption , setMenuOption}) {
                     </span>
                 </a> 
             </li>  
-            <li className="hidden"></li>
+            <li className="hidden"></li> */}
         </ul>
         </div>
     </div>

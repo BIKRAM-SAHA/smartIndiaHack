@@ -15,6 +15,7 @@ import AddCocurriculumForm from "../Dashboard_Components/Forms/AddCocurriculumFo
 import { getCocurrData } from "../../api/cocurrReq";
 import { useQuery } from "react-query";
 import { deleteCocurr } from "../../api/cocurrReq";
+import { useWindowSize } from "../../utils/useWindowSise";
 
 const Student_Home = () => {
   return (
@@ -142,30 +143,39 @@ const Student_D_Inner = ({ currUser }) => {
       id: 1,
       title: "Home",
       icon: <UilEstate />,
+      iconclass: "uil uil-estate"
     },
     {
       id: 2,
       title: "LearningPaths",
-      icon: <UilBookOpen />
+      icon: <UilBookOpen />,
+      iconclass: "uil uil-book-open"
     },
     {
       id: 3,
       title: "CoCurriculars",
-      icon: <UilAward />
+      icon: <UilAward />,
+      iconclass: "uil uil-award"
     }
   ];
   const [selected, setSelected] = useState(1);
+  const size = useWindowSize();
   return (
     <div className="flex">
         {/* <Dashtopnav />
           <Bottomobnav /> */}
-        <Sidebar 
-          menuList={studentMenuList} 
-          username={currUser.userInfo.name} 
-          userType={currUser.userType} 
-          selected={selected}
-          setSelected={setSelected}
-        />
+        {
+          size.width >= 600 ?
+          <Sidebar 
+            menuList={studentMenuList} 
+            username={currUser.userInfo.name} 
+            userType={currUser.userType} 
+            selected={selected}
+            setSelected={setSelected}
+          />
+          :
+          <Dashtopnav />
+        }
         {
           (selected === 1) && <Student_Home />
         }
@@ -174,6 +184,12 @@ const Student_D_Inner = ({ currUser }) => {
         }
         {
           (selected===3) && <Student_Cocurricular studentId={currUser._id} />
+        }
+        {
+          size.width >=600 ?
+          <></>
+          :
+          <Bottomobnav menuList={studentMenuList} menuOption={selected} setMenuOption={setSelected} />
         }
     </div>
   );
