@@ -1,8 +1,15 @@
+import React from 'react';
 import { useQuery } from 'react-query';
 import { checkAuthStatus } from '../../api/authReq';
 
-const AuthWrapper = (props) => {
+const AuthWrapper = ({ children }) => {
     const authStatus = useQuery('authstatus', checkAuthStatus, { initialData: { user: undefined, isLoggedIn: false } });
+    const childrenWithProps = React.Children.map(children, child => {
+      if (React.isValidElement(child)) {
+        return React.cloneElement(child, { currUser: authStatus.data.user });
+      }
+      return child;
+    });
     return (
         <>
             {
@@ -11,7 +18,7 @@ const AuthWrapper = (props) => {
                     authStatus.data.isLoggedIn ?
                     (
                       <>
-                      {props.children}
+                      {childrenWithProps}
                       </>
                     )
                     :

@@ -44,9 +44,8 @@ function Sidebar({ menuList = [{
     { id: 5.1, title: "Coach List" },
     { id: 5.2, title: "Add Coach" },
   ],
-},] }) {
+},], username="Ramesh", userType="student", selected, setSelected }) {
   const [open, setOpen] = useState(false);
-  const [selected, setSelected] = useState(1);
   return (
     <div className="w-fit bg-gray-800 pl-3 ">
       <div className={`min-h-screen duration-500 ${open ? "w-60" : "w-20"} `}>
@@ -93,8 +92,8 @@ function Sidebar({ menuList = [{
               </a>
               {open ? (
                 <div className=" flex flex-col">
-                  <span className="text-md font-sm text-white">Ramesh</span>
-                  <span className="text-xs text-gray-400">student</span>
+                  <span className="text-md font-sm text-white">{username ? username: "Undefined"}</span>
+                  <span className="text-xs text-gray-400">{userType ? userType: "Undefined"}</span>
                 </div>
               ) : (
                 ""
