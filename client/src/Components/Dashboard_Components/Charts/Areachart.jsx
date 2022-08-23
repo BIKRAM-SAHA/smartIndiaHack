@@ -104,15 +104,15 @@ function Areachart({ labels, dataset, datasetLabels, colors }) {
 export default Areachart;
 
 // call example:
-// <Areachart
-//           labels={["Sci", "Maths", "Eng", "SSc", "Hindi"]}
-//           dataset={[
-//             [50, 60, 70, 50, 60],
-//             [20, 30, 40, 50, 70],
-//           ]}
-//           datasetLabels={["PT-1", "PT-2"]}
-//           colors={[
-//             ["rgb(230,206,247)", "rgb(247,15,225)"],
-//             ["#b0d980", "#83de14"],
-//           ]}
-//         />
+{/* <Areachart
+          labels={["Sci", "Maths", "Eng", "SSc", "Hindi"]}
+          dataset={[
+            [50, 60, 70, 50, 60],
+            [20, 30, 40, 50, 70],
+          ]}
+          datasetLabels={["PT-1", "PT-2"]}
+          colors={[
+            ["rgb(230,206,247)", "rgb(247,15,225)"],
+            ["#b0d980", "#83de14"],
+          ]}
+        /> */}

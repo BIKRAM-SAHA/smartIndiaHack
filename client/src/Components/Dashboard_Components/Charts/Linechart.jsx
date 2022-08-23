@@ -31,7 +31,7 @@ function Linechart({ labels, dataset, datasetLabels, colors }) {
       borderDash: [20],
       borderJoinStyle: "round",
       borderCapStyle: "round",
-      tension: 0.4,
+      tension: 0,
       pointRadius: 3,
       pointHoverRadius: 6,
       pointStyle: "rectRounded",
@@ -86,15 +86,15 @@ function Linechart({ labels, dataset, datasetLabels, colors }) {
 export default Linechart;
 
 // call example:
-// <Linechart
-//           labels={["Sci", "Maths", "Eng", "SSc", "Hindi"]}
-//           dataset={[
-//             [50, 60, 70, 50, 60],
-//             [20, 30, 40, 50, 70],
-//           ]}
-//           datasetLabels={["PT-1", "PT-2"]}
-//           colors={[
-//             ["rgb(230,206,247)", "rgb(247,15,225)"],
-//             ["#b0d980", "#84c82e"],
-//           ]}
-//         />
+{/* <Linechart
+          labels={["Sci", "Maths", "Eng", "SSc", "Hindi"]}
+          dataset={[
+            [50, 60, 70, 50, 60],
+            [20, 30, 40, 50, 70],
+          ]}
+          datasetLabels={["PT-1", "PT-2"]}
+          colors={[
+            ["rgb(230,206,247)", "rgb(247,15,225)"],
+            ["#b0d980", "#84c82e"],
+          ]}
+        /> */}
