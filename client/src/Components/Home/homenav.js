@@ -22,23 +22,23 @@ function Homenav() {
             </a>
             </div>
             <div onClick={()=>setShow(!show)}>
-            <i class="uil uil-bars text-cus2 pr-3 pt-1"></i>  
+            <i className="uil uil-bars text-cus2 pr-3 pt-1"></i>  
             </div>
             </div>
             <div>
                 {
                     show?<ul className='flex flex-col justify-center pb-6 text-xl shadow-lg border-y-8 pl-14 font-pops'>
                     <li className="py-3 pt-5 hover:text-first">
-                        <i class="uil uil-estate pr-2"></i>
+                        <i className="uil uil-estate pr-2"></i>
                         <a href="#" onClick={()=>setShow(false)} className="">HOME</a></li>
                     <li className="py-3 hover:text-first">
-                        <i class="uil uil-chart pr-2"></i>
+                        <i className="uil uil-chart pr-2"></i>
                         <a href="#about" onClick={()=>setShow(false)} className="">ABOUT</a></li>
                     <li className="py-3 hover:text-first">
-                        <i class="uil uil-users-alt pr-2"></i>
+                        <i className="uil uil-users-alt pr-2"></i>
                         <a href="#partners" onClick={()=>setShow(false)} className="">PARTNERS</a></li>
                     <li className="py-3 hover:text-first">
-                        <i class="uil uil-envelope pr-2"></i>
+                        <i className="uil uil-envelope pr-2"></i>
                         <a href="#contact" onClick={()=>setShow(false)} className="">CONTACT</a></li>
                     <div className='flex flex-row pt-5 justify-betweem'>
                         {/* <div className="hover:text-orange-500">
@@ -89,16 +89,16 @@ function Homenav() {
 
                 <ul className='flex flex-row items-center justify-center text-xl pl-14 font-pops'>
                     <li className="p-3 hover:text-first">
-                        <i class="uil uil-estate pr-2"></i>
+                        <i className="uil uil-estate pr-2"></i>
                         <a href="#" className="">HOME</a></li>
                     <li className="p-3 hover:text-first">
-                        <i class="uil uil-chart pr-2"></i>
+                        <i className="uil uil-chart pr-2"></i>
                         <a href="#about" className="">ABOUT</a></li>
                     <li className="px-2 py-3 hover:text-first">
-                        <i class="uil uil-users-alt pr-2"></i>
+                        <i className="uil uil-users-alt pr-2"></i>
                         <a href="#partners" className="">PARTNERS</a></li>
                     <li className="p-3 hover:text-first">
-                        <i class="uil uil-envelope pr-2"></i>
+                        <i className="uil uil-envelope pr-2"></i>
                         <a href="#contact" className="">CONTACT</a></li>
                     
                 </ul>

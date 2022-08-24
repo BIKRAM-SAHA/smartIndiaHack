@@ -10,10 +10,10 @@ function Footer() {
 							PRAG<span className="text-orange-600">MATE</span><span className="font-[Poppins] text-4xl text-txt">.</span>
 						</p>
 						<div className="flex gap-6 pb-5 ml-2 text-xl ">
-                        <i class="uil uil-instagram hover:text-orange-600 hover:scale-105"></i>
-                        <i class="uil uil-twitter-alt hover:text-orange-600 hover:scale-105"></i>
-                        <i class="uil uil-facebook hover:text-orange-600 hover:scale-105"></i>
-                        <i class="uil uil-linkedin-alt hover:text-orange-600 hover:scale-105"></i>
+                        <i className="uil uil-instagram hover:text-orange-600 hover:scale-105"></i>
+                        <i className="uil uil-twitter-alt hover:text-orange-600 hover:scale-105"></i>
+                        <i className="uil uil-facebook hover:text-orange-600 hover:scale-105"></i>
+                        <i className="uil uil-linkedin-alt hover:text-orange-600 hover:scale-105"></i>
 						</div>
 					</ul>
 				</div>

@@ -8,8 +8,8 @@ function StudentSearchCard({ studentList = [] }) {
     return student.name.toLowerCase().includes(searchText.toLowerCase());
   });
   return (
-    <div className="max-w-lg rounded-md bg-gray-200 p-3">
-      <div className="flex">
+    <div className="m-10 mx-auto flex w-full max-w-3xl flex-col  p-10 ">
+      <div className="flex items-center justify-center">
         <UilSearch className="m-1" />
         <input
           type="text"
@@ -18,7 +18,7 @@ function StudentSearchCard({ studentList = [] }) {
             setSearchText(e.target.value);
           }}
           value={searchText}
-          className="w-full border border-gray-900"
+          className="m-1 h-8 w-3/5 rounded-lg border border-gray-400 p-1"
         />
       </div>
 
@@ -26,7 +26,7 @@ function StudentSearchCard({ studentList = [] }) {
         {displayedStudent.map((student) => {
           return (
             <div
-              className="flex w-full cursor-pointer justify-center hover:bg-gray-300"
+              className="my-4 flex w-full cursor-pointer justify-center py-2 shadow-sm hover:bg-bgbody md:rounded-lg"
               key={student.id}
             >
               <StudentCard
