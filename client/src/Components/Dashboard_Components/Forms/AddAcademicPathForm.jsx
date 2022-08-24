@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { UilTrashAlt } from "@iconscout/react-unicons";
 
 function AddAcademicPathForm() {
   const pathNameRef = useRef();
@@ -29,36 +30,41 @@ function AddAcademicPathForm() {
   };
 
   return (
-    <div>
-      <label htmlFor="PathName">Path Name: </label>
+    <div className="m-10 mx-auto flex w-full max-w-xl flex-col p-10 shadow-md sm:rounded-3xl">
+      <label htmlFor="PathName" className="p-1 text-xl font-semibold">
+        Path Name:{" "}
+      </label>
       <input
         type="text"
         name="PathName"
         ref={pathNameRef}
-        className="border border-gray-400"
+        className="m-1 h-8 rounded-lg border border-gray-400 p-1"
       />
-      <div>Topics</div>
+      <div className="mt-1 p-1 text-xl font-semibold">Topics</div>
 
       {formFields.map((form, index) => {
         return (
-          <div key={index}>
-            <label htmlFor="TopicName">Name: </label>
+          <div
+            key={index}
+            className="text-md m-1 flex h-8 items-center gap-2 font-semibold"
+          >
             <input
               type="text"
               name="TopicName"
+              placeholder="Name"
               onChange={(event) => {
                 handleTopicChanges(event, index);
               }}
               value={form.TopicName}
-              className="border border-gray-400"
+              className="grow rounded-lg border border-gray-400 p-1 font-normal"
             />
             <button
               onClick={() => {
                 removeFields(index);
               }}
-              className="m-2 cursor-pointer bg-gray-300 p-2"
+              className="m-1 cursor-pointer rounded-lg bg-first p-1 text-white"
             >
-              Delete
+              <UilTrashAlt />
             </button>
           </div>
         );
@@ -67,7 +73,7 @@ function AddAcademicPathForm() {
         onClick={() => {
           addFields();
         }}
-        className="m-2 cursor-pointer bg-gray-300 p-2"
+        className="mx-3 my-2 cursor-pointer rounded-lg bg-first p-2 font-semibold text-white "
       >
         Add More
       </button>
@@ -75,7 +81,7 @@ function AddAcademicPathForm() {
         onClick={(e) => {
           submit(e);
         }}
-        className="m-2 cursor-pointer bg-gray-300 p-2"
+        className="mx-3 my-2 mt-3 cursor-pointer rounded-lg bg-first p-2 font-semibold text-white"
       >
         Submit
       </button>
