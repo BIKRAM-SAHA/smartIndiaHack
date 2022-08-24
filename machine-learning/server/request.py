@@ -1,5 +1,6 @@
 import requests
 
-url='https://ml-sih.azurewebsites.net/api'
+url='http://localhost:5000/api'
 
-r =requests.post(url,json={'exp':[56.7,6]})
+r =requests.post(url,json={'exp':[98.5,24]})  
+print(r.json())
